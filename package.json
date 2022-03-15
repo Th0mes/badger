@@ -1,23 +1,37 @@
 {
-  "name": "badger",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "12.1.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  },
-  "devDependencies": {
-    "@types/node": "17.0.21",
-    "@types/react": "17.0.40",
-    "eslint": "8.11.0",
-    "eslint-config-next": "12.1.0",
-    "typescript": "4.6.2"
-  }
+	"name": "badger",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"prisma:dev:deploy": "prisma migrate deploy",
+		"db:dev:rm": "docker compose rm mysql -s -f -v",
+		"db:dev:up": "docker compose up mysql -d",
+		"db:dev:restart": "yarn db:dev:rm && yarn db:dev:up && sleep 1 && yarn prisma:dev:deploy",
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@next-auth/prisma-adapter": "^1.0.1",
+		"@prisma/client": "^3.10.0",
+		"next": "12.1.0",
+		"next-auth": "^4.2.1",
+		"react": "17.0.2",
+		"react-dom": "17.0.2",
+		"react-icons": "^4.3.1"
+	},
+	"devDependencies": {
+		"@types/node": "17.0.21",
+		"@types/react": "17.0.40",
+		"autoprefixer": "^10.4.2",
+		"eslint": "8.11.0",
+		"eslint-config-next": "12.1.0",
+		"eslint-config-prettier": "^8.5.0",
+		"postcss": "^8.4.8",
+		"prettier": "^2.5.1",
+		"prisma": "^3.10.0",
+		"tailwindcss": "^3.0.23",
+		"typescript": "4.6.2"
+	}
 }
